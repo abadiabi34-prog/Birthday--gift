@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday,Me amour ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+font-family:'Quicksand',sans-serif;
+background:linear-gradient(135deg,#fff0f5,#ffe4ec,#fef6ff);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.page{
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+visibility:hidden;
+transition:0.7s;
+}
+
+.page.active{
+opacity:1;
+visibility:visible;
+}
+
+.card{
+background:rgba(255,255,255,0.35);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:25px;
+text-align:center;
+width:90%;
+max-width:600px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+z-index:10;
+}
+
+h1,h2{
+font-family:'Pacifico',cursive;
+color:#ff4f9a;
+}
+
+p{
+white-space:pre-line;
+color:#555;
+line-height:1.6;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff6fa8;
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{transform:scale(1.05);}
+
+/* floating balloons */
+.balloon{
+position:absolute;
+width:25px;
+height:35px;
+background:pink;
+border-radius:50%;
+animation:floatUp 8s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-120vh);}
+}
+
+/* sparkles */
+.sparkle{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+0%,100%{opacity:0;}
+50%{opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- balloons -->
+<script>
+for(let i=0;i<15;i++){
+let b=document.createElement("div");
+b.className="balloon";
+b.style.left=Math.random()*100+"vw";
+b.style.background=["#ffb6c1","#ff69b4","#ffd1dc"][Math.floor(Math.random()*3)];
+b.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(b);
+}
+</script>
+
+<!-- sparkles -->
+<script>
+for(let i=0;i<30;i++){
+let s=document.createElement("div");
+s.className="sparkle";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.body.appendChild(s);
+}
+</script>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+<div class="card">
+<h1>Happy Birthday ❤️</h1>
+<p>I made something special for you...</p>
+<button onclick="next(1)">Start</button>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+<div class="card">
+<h2>Do you want to see my heart? 😳</h2>
+<button onclick="next(2)">Yes 🥹</button>
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+<div class="card">
+<h2>🎉 Happy Birthday 🎂</h2>
+<p id="letter"></p>
+</div>
+</div>
+
+<script>
+function next(n){
+document.querySelectorAll('.page')[n-1].classList.remove('active');
+document.querySelectorAll('.page')[n].classList.add('active');
+
+if(n===2){
+typeWriter();
+}
+}
+
+// typewriter effect
+let text = To My Dearest Hanna Fathima, ❤️
+
+There are so many things I feel for you that I can't fit them all into just one letter. No matter how much I try to express what's in my heart, I know these words will never be enough.
+
+We are about to become a long-distance couple, and honestly, that hurts. 😭 But I truly believe that no distance can ever weaken what we have. Through every call, every message, every laugh, and every moment we share, we'll keep our love alive. ❤️
+
+Our relationship was something I never expected, but it became one of the most beautiful things that has ever happened in my life. And for that, I'm truly happy, my love.
+
+For your birthday, I wished more than anything to be by your side. Unfortunately, circumstances didn't let that happen, and that breaks my heart. 💔 I had planned so many little things for this special day, but I know I can't fit everything I want to say into this message.
+
+One thing I promise is this: I want to be with you for every birthday you'll celebrate in the future. I hope we'll create countless beautiful memories together and celebrate every special day side by side.
+
+I already miss all the moments we've shared, and I can't wait to make even more with you.
+
+Once again...
+
+Happy Birthday, my dear love. ❤️🎂
+
+May your smile never fade, may all your dreams come true, and may happiness always find its way to you.
+
+With all my love,
+Abadi Suneeb ❤️
+
+
+
+
+let i=0;
+function typeWriter(){
+let el=document.getElementById("letter");
+el.innerHTML="";
+i=0;
+
+let t=setInterval(()=>{
+el.innerHTML+=text[i];
+i++;
+if(i>=text.length) clearInterval(t);
+},40);
+}
+</script>
+
+</body>
+</html>
